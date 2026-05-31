@@ -7,6 +7,7 @@ interface FetchNotesResponse {
   totalPages: number;
 }
 
+
 axios.defaults.baseURL = "https://notehub-public.goit.study/api";
 
 export const fetchNotes = async ( searchText: string, page: number ): Promise<FetchNotesResponse> => {
@@ -51,3 +52,10 @@ export const fetchNoteById = async ( id: string): Promise<Note> => {
     }); 
     return response.data;
 }
+
+export const getNotes = async (categoryId?: string) => {
+  const res = await axios.get<FetchNotesResponse>('/notes', {
+    params: { categoryId },
+  });
+  return res.data;
+};
