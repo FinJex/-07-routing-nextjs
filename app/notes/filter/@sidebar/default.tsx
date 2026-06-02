@@ -1,11 +1,14 @@
 import css from "./SidebarNotes.module.css";
 import Link from "next/link";
-import { getNotes } from "../../../../lib/api";
 
 const SidebarNotes = async () => {
-  const { notes } = await getNotes();
-
-  const tags = [...new Set(notes.map(note => note.tag))];
+const tags = [
+  "Todo",
+  "Work",
+  "Personal",
+  "Meeting",
+  "Shopping",
+];
 
   return (
     <aside>

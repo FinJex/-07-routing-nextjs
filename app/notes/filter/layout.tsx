@@ -8,8 +8,8 @@ interface Props {
 const LayoutNotes = ({children, sidebar}:Props) => {
     return (
 <div> 
-    {children}
     {sidebar}
+    {children}
 </div>
     );
 }
