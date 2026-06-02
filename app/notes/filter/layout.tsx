@@ -1,5 +1,5 @@
 import React from "react";
-
+import css from "./LayoutNotes.module.css";
 interface Props {
     children: React.ReactNode
     sidebar: React.ReactNode
@@ -7,10 +7,10 @@ interface Props {
 
 const LayoutNotes = ({children, sidebar}:Props) => {
     return (
-<div> 
-    {sidebar}
-    {children}
-</div>
+<div className={css.container}>
+      <div className={css.sidebar}>{sidebar}</div>
+      <div className={css.notesWrapper}>{children}</div>
+    </div>
     );
 }
 

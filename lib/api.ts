@@ -53,9 +53,12 @@ export const fetchNoteById = async ( id: string): Promise<Note> => {
     return response.data;
 }
 
-export const getNotes = async (categoryId?: string) => {
-  const res = await axios.get<FetchNotesResponse>('/notes', {
-    params: { categoryId },
+export const getNotes = async (tag?: string) => {
+  const res = await axios.get<FetchNotesResponse>("/notes", {
+    params: { tag },
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
+    },
   });
   return res.data;
 };
