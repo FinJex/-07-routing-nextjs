@@ -11,8 +11,10 @@ import Pagination from "@/components/Pagination/Pagination";
 import Modal from "@/components/Modal/Modal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import SearchBox from "@/components/SearchBox/SearchBox";
-
-const NotesClient = () => {
+interface NotesClientProps {
+  filter: string;
+}
+const NotesClient = ({ filter }: NotesClientProps) => {
   const [inputValue, setInputValue] = useState("");
   const [search, setSearch] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,8 +39,8 @@ const NotesClient = () => {
   };
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["notes", currentPage, search],
-    queryFn: () => fetchNotes(search, currentPage),
+    queryKey: ["notes", currentPage, search, filter],
+    queryFn: () => fetchNotes(search, currentPage, filter),
     placeholderData: keepPreviousData,
   });
 
