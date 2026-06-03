@@ -29,16 +29,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <TanstackQueryProvider>
       <body>
+      <TanstackQueryProvider>
         <Header />
-        
-        {modal}
         {children}
+        {modal}
+        
         <Footer />
-        <div id="modal-root"></div>
-        </body>
         </TanstackQueryProvider>
+        </body>
     </html>
   );
 }

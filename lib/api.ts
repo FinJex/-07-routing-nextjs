@@ -15,7 +15,8 @@ export const fetchNotes = async (searchText: string, page: number, tag?: string)
     params: {
       page,
       perPage: 12,
-      search: tag,
+      search: searchText,
+      tag: tag === "all" ? undefined : tag,
     },
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
@@ -52,13 +53,3 @@ export const fetchNoteById = async ( id: string): Promise<Note> => {
     }); 
     return response.data;
 }
-
-export const getNotes = async (tag?: string) => {
-  const res = await axios.get<FetchNotesResponse>("/notes", {
-    params: { tag },
-    headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
-    },
-  });
-  return res.data;
-};
