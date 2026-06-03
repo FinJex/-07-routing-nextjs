@@ -42,14 +42,11 @@ export default function Modal({ children, onClose }: ModalProps) {
   };
 
   return createPortal(
-    <div
-      className={css.backdrop}
-      onClick={handleBackdropClick}
-    >
+    <div className={css.backdrop} onClick={handleBackdropClick}>
       <div className={css.modal}>
         {children}
       </div>
     </div>,
-    modalRoot
+    document.body
   );
 }

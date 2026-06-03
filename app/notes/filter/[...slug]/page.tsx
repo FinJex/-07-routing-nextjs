@@ -11,7 +11,7 @@ type Props = {
 
 const NotesPage = async ({params}:Props) => {
   const { slug } = await params;
-  const filter = slug[0] === "all" ? "" : slug[0];
+  const filter = slug[0] === "all" ? undefined : slug[0];
   
   const queryClient = new QueryClient();
 
@@ -23,7 +23,7 @@ const NotesPage = async ({params}:Props) => {
   return (
     <div> 
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClient filter={filter} />
+      <NotesClient filter={slug[0]} />
     </HydrationBoundary>
     </div>
   );
